@@ -4,6 +4,8 @@ const Table = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(25);
 
   useEffect(() => {
     setLoading(true);
@@ -20,6 +22,11 @@ const Table = () => {
       setLoading(false);
     }, 1000);
   }, []);
+
+  // Pagination
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <div>
@@ -43,7 +50,7 @@ const Table = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item) => (
+            {currentItems.map((item) => (
               <tr key={item.id}>
                 <td>
                   <input type="checkbox" />
@@ -57,6 +64,21 @@ const Table = () => {
           </tbody>
         </table>
       )}
+      <div>
+        <button
+          onClick={() => setCurrentPage((currentPage) => currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span>{currentPage}</span>
+        <button
+          onClick={() => setCurrentPage((currentPage) => currentPage + 1)}
+          disabled={indexOfLastItem >= data.length}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
