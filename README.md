@@ -1,8 +1,16 @@
-# React + Vite
+Clone the repository:
+https://github.com/cs0931/react-reusable-table.git
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Navigate to the project directory:
+cd my-react-app
 
-Currently, two official plugins are available:
+Install dependencies:
+npm install
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Development Server:
+
+Run the development server to access the app at http://localhost:5173/: npm run dev
+
+Testing:
+
+Run test cases using React Testing Library: npm run test
