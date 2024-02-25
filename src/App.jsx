@@ -7,6 +7,7 @@ const Table = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(25);
   const [sortKey, setSortKey] = useState(null);
+  const [selectedRows, setSelectedRows] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -49,6 +50,17 @@ const Table = () => {
     }
   };
 
+  const handleSelectRow = (id) => {
+    const index = selectedRows.indexOf(id);
+    if (index === -1) {
+      setSelectedRows([...selectedRows, id]);
+    } else {
+      const updatedSelectedRows = [...selectedRows];
+      updatedSelectedRows.splice(index, 1);
+      setSelectedRows(updatedSelectedRows);
+    }
+  };
+
   return (
     <div>
       <input
@@ -77,7 +89,11 @@ const Table = () => {
             {filteredItems.map((item) => (
               <tr key={item.id}>
                 <td>
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    onChange={() => handleSelectRow(item.id)}
+                    checked={selectedRows.includes(item.id)}
+                  />
                 </td>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
@@ -102,6 +118,14 @@ const Table = () => {
         >
           Next
         </button>
+        <div>
+          Selected Row Data:{" "}
+          {JSON.stringify(
+            selectedRows.map((id) =>
+              filteredItems.find((item) => item.id === id)
+            )
+          )}
+        </div>
       </div>
     </div>
   );
