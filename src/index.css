@@ -1,0 +1,61 @@
+/* Table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Table head */
+thead {
+  background-color: #f2f2f2;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+/* Alternating row colors */
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 10px;
+}
+
+.pagination button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #45a049;
+}
+
+/* Sorting indicators */
+.sortable {
+  cursor: pointer;
+}
+
+.sortable:after {
+  content: '\25B2'; /* Upward triangle */
+  margin-left: 5px;
+}
+
+.sortable.desc:after {
+  content: '\25BC'; /* Downward triangle */
+}
+
+/* Checkboxes */
+td input[type="checkbox"] {
+  margin-right: 5px;
+}
